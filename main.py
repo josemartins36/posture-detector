@@ -11,6 +11,7 @@ pose = mp_pose.Pose()
 
 def detectar_cabeca_frente(orelha, ombro):
     delta_x = orelha[0] - ombro[0]
+    print("delta_x (frente):", delta_x)
 
     if delta_x > 0.04:
         return "CABECA A FRENTE"
@@ -19,6 +20,7 @@ def detectar_cabeca_frente(orelha, ombro):
 
 def detectar_cabeca_baixo(orelha, ombro):
     delta_y = orelha[1] - ombro[1]
+    print("delta_y (baixo):", delta_y)
 
     if delta_y > 0.03:
         return "CABECA ABAIXADA"
@@ -27,6 +29,7 @@ def detectar_cabeca_baixo(orelha, ombro):
 
 def detectar_ombros(ombro_esq, ombro_dir):
     diff = abs(ombro_esq[1] - ombro_dir[1])
+    print("diff ombro:", diff)
 
     if diff > 0.03:
         return "OMBROS DESALINHADOS"
@@ -123,6 +126,20 @@ while True:
         # linha cabeça → ombro
         cv2.line(frame, (px1, py1), (px2, py2), (0, 255, 255), 2)
 
+        # ===== DEBUG NA TELA =====
+
+        delta_x = centro_orelha[0] - centro_ombro[0]
+        delta_y = centro_orelha[1] - centro_ombro[1]
+        diff_ombro = abs(ombro_esq[1] - ombro_dir[1])
+
+        cv2.putText(frame, f"dx: {delta_x:.3f}", (30, 150),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,255,255), 2)
+
+        cv2.putText(frame, f"dy: {delta_y:.3f}", (30, 180),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,255,255), 2)
+
+        cv2.putText(frame, f"ombro: {diff_ombro:.3f}", (30, 210),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,255,255), 2)
 
     # ===== TEXTO =====
 
@@ -148,7 +165,7 @@ while True:
             2
         )
 
-    cv2.imshow("Detector de Postura", frame)
+    cv2.imshow("Detector de Postura (DEBUG)", frame)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
