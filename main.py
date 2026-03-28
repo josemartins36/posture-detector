@@ -8,21 +8,19 @@ mp_drawing = mp.solutions.drawing_utils
 pose = mp_pose.Pose()
 
 # ===== DETECÇÕES =====
-
 def detectar_cabeca_frente(orelha, ombro):
     delta_x = orelha[0] - ombro[0]
     print("delta_x (frente):", delta_x)
 
-    if delta_x > 0.04:
+    if delta_x < -0.08:
         return "CABECA A FRENTE"
     return None
-
 
 def detectar_cabeca_baixo(orelha, ombro):
     delta_y = orelha[1] - ombro[1]
     print("delta_y (baixo):", delta_y)
 
-    if delta_y > 0.03:
+    if delta_y < -0.15:
         return "CABECA ABAIXADA"
     return None
 
@@ -34,7 +32,6 @@ def detectar_ombros(ombro_esq, ombro_dir):
     if diff > 0.03:
         return "OMBROS DESALINHADOS"
     return None
-
 
 # ===== WEBCAM =====
 cap = cv2.VideoCapture(0)
