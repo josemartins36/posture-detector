@@ -75,10 +75,10 @@ while True:
 
         # ===== DETECÇÕES COM BASELINE =====
         if baseline:
-            if delta_x < baseline["dx"] - 0.04:
+            if delta_x < baseline["dx"] - 0.01:
                 mensagens.append("CABECA A FRENTE")
 
-            if angulo_cabeca < baseline["angulo"] - 15:
+            if angulo_cabeca < baseline["angulo"] - 3:
                 mensagens.append("CABECA ABAIXADA")
 
             if diff_ombro > baseline["ombro"] + 0.02:
