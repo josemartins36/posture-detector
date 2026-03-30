@@ -1,31 +1,32 @@
-# Como rodar o projeto:
+## Como rodar o projeto:
 
-## 1. Clonar o repositório
+### 1. Clonar o repositório
 git clone https://github.com/josemartins36/posture-detector
 
 cd posture-detector
 
-## 2. Criar ambiente virtual
+### 2. Criar ambiente virtual
 
 python -m venv venv
 
-## 3. Ativar o ambiente
+### 3. Ativar o ambiente
 
 source venv/bin/activate
 
-## 4. Instalar dependências
+### 4. Instalar dependências
 
 pip install -r requirements.txt
 
-## 5. Executar o programa
+### 5. Executar o programa
 
 python main.py
 
-# Como usar
-1.Abra o programa
+## Como usar
 
-2.Sente-se com postura correta
+1. Abra o programa
 
-3.Pressione a tecla C para calibrar
+2. Sente-se com postura correta
 
-4.O sistema começará a detectar sua postura
+3. Pressione a tecla C para calibrar
+
+4. O sistema começará a detectar sua postura
